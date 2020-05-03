@@ -24,9 +24,39 @@ class Card:
         self.color, self.value = color, value
 
     def __eq__(self, other):
+        if self.value in range(13, 15) and self.value == other.value:
+            return True
         return self.color == other.color and self.value == other.value
 
     def valid_card(self, card):
         if card.value == 13 or card.value == 14:
             return True
+        if card.value == self.value:
+            return True
         return card.color == self.color
+
+    def get_color_string(self):
+        if self.color == 1:
+            return "red"
+        if self.color == 2:
+            return "orange"
+        if self.color == 3:
+            return "green"
+        if self.color == 4:
+            return "blue"
+        if self.color == 0:
+            return "black"
+
+    def get_value_string(self):
+        if self.value in range(0, 10):
+            return str(self.value)
+        if self.value == 10:
+            return "STP"
+        if self.value == 11:
+            return "REV"
+        if self.value == 12:
+            return "+2"
+        if self.value == 13:
+            return "COL"
+        if self.value == 14:
+            return "+4"

@@ -1,5 +1,3 @@
-
-
 class Brain:
     def get(self, s):
         return

@@ -2,19 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a734aae-3ac1-4ce4-a9b9-ce7d96e0b1af" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Brains/Brain.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brains/Dummy_Brain.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brains/Gene_Brain.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brains/Human_Brain.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Brains/RL_Brain.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Enviroment/Card.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Enviroment/GUI_Output.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Enviroment/UNO_Client.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Enviroment/UNO_Server.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Models/Cleaner_Model.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Models/Cleaner_Model.dwg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Q-Learning-Draft/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Q-Learning-Draft/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brains/Brain.py" beforeDir="false" afterPath="$PROJECT_DIR$/Brains/Brain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brains/Human_Brain.py" beforeDir="false" afterPath="$PROJECT_DIR$/Brains/Human_Brain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Enviroment/Card.py" beforeDir="false" afterPath="$PROJECT_DIR$/Enviroment/Card.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Enviroment/GUI_Output.py" beforeDir="false" afterPath="$PROJECT_DIR$/Enviroment/GUI_Output.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Enviroment/UNO_Client.py" beforeDir="false" afterPath="$PROJECT_DIR$/Enviroment/UNO_Client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Enviroment/UNO_Server.py" beforeDir="false" afterPath="$PROJECT_DIR$/Enviroment/UNO_Server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,17 +22,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="58" selection-start-line="2" selection-start-column="55" selection-end-line="2" selection-end-column="58" />
+            <state relative-caret-position="153">
+              <caret line="9" column="19" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Enviroment/UNO_Server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="45" column="28" lean-forward="true" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+            <state relative-caret-position="122">
+              <caret line="57" selection-start-line="57" selection-end-line="57" />
               <folding>
                 <element signature="e#70#113#0" expanded="true" />
               </folding>
@@ -48,17 +46,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Enviroment/Card.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="416">
+              <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Enviroment/GUI_Output.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="24" column="11" lean-forward="true" selection-start-line="24" selection-start-column="11" selection-end-line="25" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Brains/Human_Brain.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="285">
+              <caret line="28" column="49" lean-forward="true" selection-start-line="28" selection-start-column="49" selection-end-line="28" selection-end-column="49" />
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -74,22 +87,14 @@
         <option value="$PROJECT_DIR$/Brains/Dummy_Brain.py" />
         <option value="$PROJECT_DIR$/Brains/Gene_Brain.py" />
         <option value="$PROJECT_DIR$/Brains/RL_Brain.py" />
-        <option value="$PROJECT_DIR$/Brains/Brain.py" />
-        <option value="$PROJECT_DIR$/Brains/Human_Brain.py" />
-        <option value="$PROJECT_DIR$/Enviroment/Card.py" />
-        <option value="$PROJECT_DIR$/Enviroment/UNO_Client.py" />
+        <option value="$PROJECT_DIR$/Task.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/Brains/Brain.py" />
+        <option value="$PROJECT_DIR$/Enviroment/UNO_Client.py" />
         <option value="$PROJECT_DIR$/Enviroment/UNO_Server.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/Q-UNO.iml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/Enviroment/GUI_Output.py" />
+        <option value="$PROJECT_DIR$/Enviroment/Card.py" />
+        <option value="$PROJECT_DIR$/Brains/Human_Brain.py" />
       </list>
     </option>
   </component>
@@ -106,7 +111,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -117,22 +121,20 @@
             <path>
               <item name="Q-UNO" type="b2602c69:ProjectViewProjectNode" />
               <item name="Q-UNO" type="462c0819:PsiDirectoryNode" />
-              <item name="Brains" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Q-UNO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Q-UNO" type="462c0819:PsiDirectoryNode" />
               <item name="Enviroment" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/main.py" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -191,13 +193,13 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.5" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32910052" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39894179" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -209,15 +211,42 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32910052" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Brains/Human_Brain.py</url>
+          <line>37</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
     <entry file="file://$PROJECT_DIR$/UNO_Env" />
     <entry file="file://$PROJECT_DIR$/Enviroment/Human_Brain.py" />
     <entry file="file://$PROJECT_DIR$/Enviroment/Human_Input.py" />
-    <entry file="file://$PROJECT_DIR$/Enviroment/GUI_Output.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Enviroment/UNO_Env.py" />
     <entry file="file://$PROJECT_DIR$/Brains/Dummy_Brain.py">
       <provider selected="true" editor-type-id="text-editor" />
@@ -239,47 +268,78 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Brains/Brain.py">
+    <entry file="file://$PROJECT_DIR$/Task.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/tkinter/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        <state relative-caret-position="203">
+          <caret line="1282" selection-start-line="1282" selection-end-line="1282" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Brains/Human_Brain.py">
+    <entry file="file://$PROJECT_DIR$/Brains/Brain.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Enviroment/UNO_Client.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+        <state relative-caret-position="204">
+          <caret line="12" column="26" lean-forward="true" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Enviroment/Card.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/threading.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+        <state relative-caret-position="180">
+          <caret line="863" selection-start-line="863" selection-end-line="863" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="58" selection-start-line="2" selection-start-column="55" selection-end-line="2" selection-end-column="58" />
+        <state relative-caret-position="153">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Enviroment/UNO_Server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="45" column="28" lean-forward="true" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+        <state relative-caret-position="122">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
           <folding>
             <element signature="e#70#113#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Enviroment/Card.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Enviroment/GUI_Output.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="24" column="11" lean-forward="true" selection-start-line="24" selection-start-column="11" selection-end-line="25" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Brains/Human_Brain.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="28" column="49" lean-forward="true" selection-start-line="28" selection-start-column="49" selection-end-line="28" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
