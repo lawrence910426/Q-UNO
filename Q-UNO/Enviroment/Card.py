@@ -15,7 +15,7 @@
 2 is orange
 3 is green
 4 is blue
-0 is special card which has not specify any color
+0 is special card which has arbitrary number
 """
 
 
@@ -28,12 +28,20 @@ class Card:
             return True
         return self.color == other.color and self.value == other.value
 
-    def valid_card(self, card):
-        if card.value == 13 or card.value == 14:
-            return True
-        if card.value == self.value:
-            return True
-        return card.color == self.color
+    def valid_card(self, card, accumulate_penalty):
+        if accumulate_penalty > 0:
+            if card.value == 14:
+                return True
+            elif card.value == 12:
+                return card.color == self.color
+            else:
+                return False
+        else:
+            if card.value in [13, 14]:
+                return True
+            if card.value == self.value:
+                return True
+            return card.color == self.color
 
     def get_color_string(self):
         if self.color == 1:
@@ -60,3 +68,6 @@ class Card:
             return "COL"
         if self.value == 14:
             return "+4"
+
+    def get_string(self):
+        return self.get_color_string() + " " + self.get_value_string()

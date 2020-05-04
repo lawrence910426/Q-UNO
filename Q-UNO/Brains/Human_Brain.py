@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import *
 from functools import partial
 import time
+import copy
 
 
 class HumanBrain(Brain):
@@ -25,17 +26,28 @@ class HumanBrain(Brain):
                       ).place(x=x, y=y)
             tk.Label(self.window, text="?").place(x=x+20, y=y+45)
         else:
-            tk.Button(self.window, fg="white",
-                      bg=card.get_color_string(),
-                      width=40, height=90, image=self.pixel_virtual,
-                      command=partial(self.choose_card, card)
-                      ).place(x=x, y=y)
+            if card.color == 0:
+                for i in range(1, 5):
+                    card.color = i
+                    tk.Button(self.window, fg="white",
+                              bg=card.get_color_string(),
+                              width=40, height=90/4, image=self.pixel_virtual,
+                              command=partial(self.choose_card, copy.deepcopy(card))
+                              ).place(x=x, y=y+90/4*(i-1))
+                card.color = 0
+            else:
+                tk.Button(self.window, fg="white",
+                          bg=card.get_color_string(),
+                          width=40, height=90, image=self.pixel_virtual,
+                          command=partial(self.choose_card, card)
+                          ).place(x=x, y=y)
             tk.Label(self.window, text=card.get_value_string()).place(x=x+10, y=y+45)
 
     def get(self, s):
         for item in self.window.winfo_children():
-           item.destroy()
+            item.destroy()
         self.chosen_card, self.chose = None, False
+        self.window.title("Human Brain - Penalty: " + str(s[4]))
         self.window.lift()
 
         for i in range(len(s[2])):
