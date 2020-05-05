@@ -21,7 +21,7 @@ class GUIOutput:
 
     def update(self, state):
         if self.enable:
-            # time.sleep(1)
+            time.sleep(0.1)
             """ {0 -> used, 1 -> unused, 2 -> first hand, 3 -> second hand} """
             if isinstance(state, int):
                 message = {0: "DRAW", 1: "UP WIN", 2: "DOWN WIN"}
@@ -37,8 +37,10 @@ class GUIOutput:
                 for i in range(len(state[3])):
                     x, y = i % 36, int(i / 36)
                     self.draw_card(x * 50, 600 + 100 * y, state[3][i])
-                for i in range(max(0, len(state[0]) - 30), len(state[0])):
-                    self.draw_card(150 + i * 50, 300, state[0][i])
+                for i in range(0, min(30, len(state[0]))):
+                    card = state[0][max(0, len(state[0]) - 30) + i]
+                    if card is not None:
+                        self.draw_card(150 + i * 50, 300, card)
 
     def destroy(self):
         if self.enable:

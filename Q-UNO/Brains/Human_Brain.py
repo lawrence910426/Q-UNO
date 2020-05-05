@@ -57,7 +57,8 @@ class HumanBrain(Brain):
             x, y = i % 36, int(i / 36)
             self.draw_card(x * 50, 600 + 100 * y, None)
         for i in range(min(len(s[0]), 30)):
-            self.draw_card(150 + i * 50, 300, s[0][i])
+            if s[0][i] is not None:
+                self.draw_card(150 + i * 50, 300, s[0][i])
 
         while not self.chose:
             time.sleep(0.1)

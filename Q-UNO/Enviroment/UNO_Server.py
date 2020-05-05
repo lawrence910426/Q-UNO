@@ -56,20 +56,21 @@ class UNOServer:
     def play(self):
         result, plays = 0, 0
         try:
-            player, player_temp, self.accumulate_penalty = 0, 0, 0
+            player, player_temp, self.accumulate_penalty, last_card = 0, 0, 0, None
             s, a, r, s_ = [None, None], [None, None], [None, None], [0, 0]
             self.GUI.update(self.get_state())
             while plays < self.config["max_plays"] and len(self.unused) > 0 and result is 0:
                 a[player] = card = self.clients[player].play(self.get_hidden_state(player))
                 if card is not None and card.color is 0:
                     raise Exception("Played a card which hasn't specify color: " + card.get_string())
-                """ -- GAME LOGIC -- """
+                """ ---------------- -- GAME LOGIC -- ---------------- """
                 s[player] = self.get_hidden_state(player)
                 if card is not None:
                     if card not in self.hand_card[player]:
                         raise Exception("Played a card which does not exist in hand card")
-                    if len(self.used) != 0 and not self.used[-1].valid_card(card, self.accumulate_penalty):
+                    if last_card is not None and not last_card.valid_card(card, self.accumulate_penalty):
                         raise Exception("Played an invalid card: " + card.get_string())
+                    last_card = card
 
                 if card is None:
                     if self.accumulate_penalty is 0:
@@ -81,6 +82,7 @@ class UNOServer:
                 else:
                     if card.value in [10, 11]:
                         player_temp = player
+                        self.used.append(None)
                     else:
                         player_temp = 1 - player
                     self.accumulate_penalty += 2 if card.value is 12 else 0
@@ -88,9 +90,9 @@ class UNOServer:
 
                 if card is not None:
                     self.hand_card[player].remove(card)
-                    self.used.append(card)
+                self.used.append(card)
                 s_[player] = self.get_hidden_state(player)
-                """ ---------------- """
+                """ ---------------- ---------------- ----------------  """
 
                 player, plays = player_temp, plays + 1
                 """ result = {0: draw, 1: first hand win, 2: second hand win} """
