@@ -6,16 +6,7 @@ class Versus:
         self.first_hand, self.second_hand = first, second
         self.first, self.second = 0, 0
 
-    def start_game(self):
-        def done(final_standings):
-            print(final_standings)
-            if final_standings["result"] == 1:
-                self.first += 1
-            if final_standings["result"] == 2:
-                self.second += 1
-            print(self.first, self.second)
-            self.start_game()
-
+    def start_game(self, done):
         def first_hand_play(state):
             return self.first_hand.get(state)
 

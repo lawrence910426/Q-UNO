@@ -67,7 +67,9 @@ class UNOServer:
                 s[player] = self.get_hidden_state(player)
                 if card is not None:
                     if card not in self.hand_card[player]:
-                        raise Exception("Played a card which does not exist in hand card")
+                        raise Exception("Played a card which does not exist in hand card "
+                                        + card.get_string() + " "
+                                        + "-".join([item.get_string() for item in self.hand_card[player]]))
                     if last_card is not None and not last_card.valid_card(card, self.accumulate_penalty):
                         raise Exception("Played an invalid card: " + card.get_string())
                     last_card = card

@@ -21,7 +21,7 @@ class GUIOutput:
 
     def update(self, state):
         if self.enable:
-            time.sleep(0.1)
+            time.sleep(1)
             """ {0 -> used, 1 -> unused, 2 -> first hand, 3 -> second hand} """
             if isinstance(state, int):
                 message = {0: "DRAW", 1: "UP WIN", 2: "DOWN WIN"}

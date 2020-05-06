@@ -35,7 +35,7 @@ class NNTranslate:
         [self.used, len(self.unused), self.hand_card[player],
         len(self.hand_card[1 - player]), self.accumulate_penalty]
         """
-        ans = np.zeros((NNTranslate.features, ))
+        ans = np.zeros(NNTranslate.features)
         cursor = 0
         for card in state[2]:
             if card.color == 0:
@@ -85,6 +85,17 @@ class NNTranslate:
         return ans
 
     @staticmethod
-    def nn_to_state(state):
-        value = np.argmax(state)
-        return Card(value / 15, value % 15) if value is 15 * 4 else None
+    def nn_to_state(value):
+        return None if value == 15 * 4 else Card(int(value / 15) + 1, value % 15)
+
+    @staticmethod
+    def get_available_mask(available_cards):
+        ans = np.zeros(NNTranslate.actions)
+        ans[15 * 4] = 1
+        for card in available_cards:
+            if card.color == 0:
+                for i in range(4):
+                    ans[i * 15 + card.value] = 1
+            else:
+                ans[(card.color - 1) * 15 + card.value] = 1
+        return ans
