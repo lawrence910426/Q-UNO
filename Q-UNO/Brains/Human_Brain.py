@@ -1,6 +1,5 @@
 from Brains.Brain import Brain
-import tkinter as tk
-from tkinter import *
+from mttkinter import mtTkinter as tk
 from functools import partial
 import time
 import copy

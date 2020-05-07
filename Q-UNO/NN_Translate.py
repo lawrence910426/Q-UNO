@@ -7,10 +7,7 @@ numbers -> 15 (value statistics of hand card)
 
 one hot -> prev_steps * [ 4 (colors) * 2(is chosen) + 1(None) ]
 
-one hot -> opponent cards < opponent_low_threshold
-one hot -> opponent_low_threshold <= opponent cards < opponent_high_threshold
-one hot -> opponent_high_threshold <= opponent cards
-
+number -> opponent cards
 number -> accumulate penalty
 
 one hot -> prev_steps * 1(is functional card)
@@ -25,7 +22,7 @@ from Enviroment.Card import Card
 
 class NNTranslate:
     prev_steps = 15
-    features = (13 * 4 + 2) * 2 + 5 + 15 + prev_steps * 9 + 3 + 1 + prev_steps
+    features = (13 * 4 + 2) * 2 + 5 + 15 + prev_steps * 9 + 1 + 1 + prev_steps
     actions = 15 * 4 + 1
     oppo_low_thre, oppo_high_thre = 3, 7
 
@@ -70,14 +67,12 @@ class NNTranslate:
             cursor += 9
 
         cursor = (13 * 4 + 2) * 2 + 5 + 15 + NNTranslate.prev_steps * 9
-        cursor += 1 if NNTranslate.oppo_low_thre <= state[3] else 0
-        cursor += 1 if NNTranslate.oppo_high_thre <= state[3] else 0
-        ans[cursor] = 1
+        ans[cursor] = state[3]
 
-        cursor = (13 * 4 + 2) * 2 + 5 + 15 + NNTranslate.prev_steps * 9 + 3
+        cursor = (13 * 4 + 2) * 2 + 5 + 15 + NNTranslate.prev_steps * 9 + 1
         ans[cursor] = state[4]
 
-        cursor = (13 * 4 + 2) * 2 + 5 + 15 + NNTranslate.prev_steps * 9 + 3 + 1
+        cursor = (13 * 4 + 2) * 2 + 5 + 15 + NNTranslate.prev_steps * 9 + 1 + 1
         for i in range(min(NNTranslate.prev_steps, len(state[0]))):
             card = state[0][-(i + 1)]
             ans[cursor] = 1 if card is not None and card.value >= 10 else 0
@@ -87,6 +82,10 @@ class NNTranslate:
     @staticmethod
     def nn_to_state(value):
         return None if value == 15 * 4 else Card(int(value / 15) + 1, value % 15)
+
+    @staticmethod
+    def card_to_nn(card):
+        return 15 * 4 if card is None else (card.color - 1) * 15 + card.value
 
     @staticmethod
     def get_available_mask(available_cards):

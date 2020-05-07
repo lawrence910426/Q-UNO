@@ -48,5 +48,11 @@ class GeneBrain(Brain):
     def mutate(self):
         self.session.run(self.mutation)
 
-    def die_off(self):
+    def reset(self):
         self.session.run(self.suicide)
+
+    def fertilization(self, mate_id):
+        self_param = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope='network_' + str(self.id))
+        mate_param = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope='network_' + str(mate_id))
+        fertilize = [tf.assign(s, tf.div(tf.add(s, m), 2)) for s, m in zip(self_param, mate_param)]
+        self.session.run(fertilize)

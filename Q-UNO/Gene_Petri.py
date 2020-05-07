@@ -10,7 +10,7 @@ import datetime
 
 
 class GenePetri:
-    games_count = 5
+    games_count = 3
     organism_amount = 5
     test_game_count = 30
 
@@ -24,7 +24,7 @@ class GenePetri:
             self.session.graph)
         self.win_rate = tf.placeholder(tf.float64)
         self.win_rate_summary = tf.summary.scalar(name='win_rate', tensor=self.win_rate)
-        threading.Thread(target=self.evolution).start()
+        threading.Thread(target=self.evolution, daemon=True).start()
 
     def evolution(self):
         self.steps = 0
@@ -47,7 +47,8 @@ class GenePetri:
             self.win_rate_log.add_summary(summary, self.steps)
             print("-------------------------------")
             self.genetic_rank = self.dummy_rank = self.draw = self.conducted = 0
-            self.loser_elimination()
+            # self.loser_elimination()
+            self.fertilization()
             self.genetic_mutate()
             self.steps += 1
 
@@ -73,7 +74,13 @@ class GenePetri:
             self.organism[i].mutate()
 
     def loser_elimination(self):
-        self.organism[np.argmin(self.rank)].die_off()
+        self.organism[np.argmin(self.rank)].reset()
+
+    def fertilization(self):
+        alpha_id = np.argmax(self.rank)
+        for i in range(GenePetri.organism_amount):
+            if i is not alpha_id:
+                self.organism[i].fertilization(alpha_id)
 
     def show_win_rate(self):
         self.genetic_rank = self.dummy_rank = self.draw = 0

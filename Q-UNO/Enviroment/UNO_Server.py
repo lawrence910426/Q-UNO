@@ -51,13 +51,13 @@ class UNOServer:
 
     def start_game(self, done):
         self.done = done
-        threading.Thread(target=self.play).start()
+        threading.Thread(target=self.play, daemon=True).start()
 
     def play(self):
         result, plays = 0, 0
         try:
             player, player_temp, self.accumulate_penalty, last_card = 0, 0, 0, None
-            s, a, r, s_ = [None, None], [None, None], [None, None], [0, 0]
+            s, a, r, s_ = [None, None], [None, None], [0, 0], [None, None]
             self.GUI.update(self.get_state())
             while plays < self.config["max_plays"] and len(self.unused) > 0 and result is 0:
                 a[player] = card = self.clients[player].play(self.get_hidden_state(player))
@@ -69,7 +69,7 @@ class UNOServer:
                     if card not in self.hand_card[player]:
                         raise Exception("Played a card which does not exist in hand card "
                                         + card.get_string() + " "
-                                        + "-".join([item.get_string() for item in self.hand_card[player]]))
+                                        + "[" + ",".join([item.get_string() for item in self.hand_card[player]]) + "]")
                     if last_card is not None and not last_card.valid_card(card, self.accumulate_penalty):
                         raise Exception("Played an invalid card: " + card.get_string())
                     last_card = card
@@ -102,14 +102,16 @@ class UNOServer:
                     result = 1
                 elif len(self.hand_card[1]) == 0:
                     result = 2
-                if not (plays < self.config["max_plays"] and len(self.unused) > 0 and result == 0):
-                    if result == 0:
-                        r[0] = len(self.hand_card[0]) - len(self.hand_card[1])
-                        r[1] = len(self.hand_card[1]) - len(self.hand_card[0])
-                    else:
-                        r = [100 * result, 100 * result * (-1)]
+                # if not (plays < self.config["max_plays"] and len(self.unused) > 0 and result == 0):
+                if result == 0:
+                    r[0] = len(self.hand_card[0]) - len(self.hand_card[1])
+                    r[1] = len(self.hand_card[1]) - len(self.hand_card[0])
+                else:
+                    r = [100 * result, 100 * result * (-1)]
+
                 for i in range(2):
-                    self.clients[i].observe(s[i], a[i], r[i], s_[i])
+                    if s[i] is not None:
+                        self.clients[i].observe(s[i], a[i], r[i], s_[i])
                 self.GUI.update(self.get_state())
 
             self.GUI.update(result)
