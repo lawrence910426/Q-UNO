@@ -19,7 +19,7 @@ class OffensiveBrain(Brain):
             chosen_card.color = np.random.choice(range(1, 5))
         return chosen_card
 
-    def add_observation(self, s, a, r, s_):
+    def add_observation(self, s, a, r, s_, batch_size):
         return
 
     def learn(self):
@@ -40,7 +40,7 @@ class DefensiveBrain(Brain):
             chosen_card.color = np.random.choice(range(1, 5))
         return chosen_card
 
-    def add_observation(self, s, a, r, s_):
+    def add_observation(self, s, a, r, s_, batch_size):
         return
 
     def learn(self):

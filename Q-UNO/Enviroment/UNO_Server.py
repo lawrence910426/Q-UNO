@@ -11,6 +11,7 @@ from Enviroment.GUI_Output import GUIOutput
 import random
 import threading
 import traceback
+import time
 
 
 class UNOServer:
@@ -102,18 +103,17 @@ class UNOServer:
                     result = 1
                 elif len(self.hand_card[1]) == 0:
                     result = 2
-                # if not (plays < self.config["max_plays"] and len(self.unused) > 0 and result == 0):
+
                 if result == 0:
-                    r[0] = len(self.hand_card[0]) - len(self.hand_card[1])
-                    r[1] = len(self.hand_card[1]) - len(self.hand_card[0])
+                    r[0] = 0  # (len(self.hand_card[0]) - len(self.hand_card[1])) / 10
+                    r[1] = 0  # (len(self.hand_card[1]) - len(self.hand_card[0])) / 10
                 else:
-                    r = [100 * result, 100 * result * (-1)]
+                    r = [3000 * result, 3000 * result * (-1)]
 
                 for i in range(2):
                     if s[i] is not None:
                         self.clients[i].observe(s[i], a[i], r[i], s_[i])
                 self.GUI.update(self.get_state())
-
             self.GUI.update(result)
         except Exception as e:
             print(e)

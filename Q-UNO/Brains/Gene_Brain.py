@@ -39,7 +39,7 @@ class GeneBrain(Brain):
         action_values = action_values * NNTranslate.get_available_mask(available)
         return NNTranslate.nn_to_state(np.argmax(action_values))
 
-    def add_observation(self, s, a, r, s_):
+    def add_observation(self, s, a, r, s_, batch_size):
         return
 
     def learn(self):
