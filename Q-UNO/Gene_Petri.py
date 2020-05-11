@@ -49,10 +49,9 @@ class GenePetri:
             for cell in self.organism:
                 Mimic(GenePetri.opponent, cell, GenePetri.opponent).learn(finish_init)
             self.saver = tf.train.Saver()
-            self.save(True, "model")
+            self.save(True)
 
     def evolution(self):
-        self.steps = 0
         while True:
             self.conduct_game()
             while self.conducted is not GenePetri.games_count * GenePetri.organism_amount * 2:
@@ -129,10 +128,11 @@ class GenePetri:
             Versus(self.organism[alpha_id], GenePetri.opponent).start_game(done_gen)
             Versus(GenePetri.opponent, self.organism[alpha_id]).start_game(done_dum)
 
-    def save(self, meta=False, name=None):
-        self.saver.save(self.session, 'models/' + self.tag + "/" + name if name is not None else self.tag,
+    def save(self, meta=False):
+        self.saver.save(self.session,
+                        'models/' + self.tag + '/model',
                         write_meta_graph=meta, global_step=self.steps)
-        with open('models/' + self.tag + "/pickle", 'wb') as file:
+        with open('./models/' + self.tag + "/pickle", 'wb') as file:
             pickle.dump({
                 "data": [
                     {
