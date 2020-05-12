@@ -2,7 +2,7 @@ from Versus import *
 import numpy as np
 from Brains.Gene_Brain import GeneBrain
 from Brains.Dummy_Brain import DummyBrain
-from Brains.Naive_Brain import OffensiveBrain
+from Brains.Naive_Brain import *
 from Brains.RL_Brain import RLBrain
 from Mimic import Mimic
 import time
@@ -15,7 +15,7 @@ class GenePetri:
     games_count = 10
     organism_amount = 3
     test_game_count = 30
-    opponent = OffensiveBrain()
+    opponent = DefensiveBrain()
 
     def __init__(self, tag, restore=False):
         self.session = tf.Session()

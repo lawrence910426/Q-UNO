@@ -7,7 +7,7 @@ import threading
 class Mimic:
     def __init__(self, trainer, trainee, dummy):
         self.trainer, self.trainee, self.dummy = trainer, trainee, dummy
-        self.finished_games, self.conduct_games = 0, 300
+        self.finished_games, self.conduct_games = 0, 100
 
     def learn(self, callback):
         def done(final_standings):
