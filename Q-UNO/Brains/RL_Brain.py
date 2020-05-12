@@ -44,6 +44,8 @@ class RLBrain:
                                        kernel_initializer=w_init, bias_initializer=b_init)
             previous = tf.layers.dense(previous, 40, tf.nn.leaky_relu, True,
                                        kernel_initializer=w_init, bias_initializer=b_init)
+            previous = tf.layers.dense(previous, 50, tf.nn.leaky_relu, True,
+                                       kernel_initializer=w_init, bias_initializer=b_init)
             previous = tf.layers.dense(previous, 30, tf.nn.leaky_relu, True,
                                        kernel_initializer=w_init, bias_initializer=b_init)
             return previous
