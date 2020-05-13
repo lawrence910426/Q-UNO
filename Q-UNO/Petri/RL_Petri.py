@@ -11,7 +11,7 @@ import tensorflow as tf
 import pickle
 
 
-class GenePetri:
+class RLPetri:
     games_count = 10
     organism_amount = 3
     test_game_count = 30
@@ -19,7 +19,7 @@ class GenePetri:
 
     def __init__(self, tag, restore=False):
         self.session = tf.Session()
-        self.rank = np.zeros(GenePetri.organism_amount)
+        self.rank = np.zeros(RLPetri.organism_amount)
         self.inited_organism, self.tag = 0, tag
         self.steps = self.genetic_rank = self.dummy_rank = self.draw = self.conducted = 0
         self.win_rate_log = tf.summary.FileWriter("logs/fit/" + self.tag, self.session.graph)
@@ -34,7 +34,7 @@ class GenePetri:
                                          memory_count=manifest["data"][i]["memory_count"],
                                          swap_vars=manifest["data"][i]["swap_vars"],
                                          suicide_vars=manifest["data"][i]["suicide_vars"])
-                                 for i in range(GenePetri.organism_amount)]
+                                 for i in range(RLPetri.organism_amount)]
                 self.saver = tf.train.import_meta_graph('models/' + self.tag + "/model-0.meta")
                 self.saver.restore(self.session, tf.train.latest_checkpoint('models/' + self.tag + "/"))
                 self.steps = manifest["steps"]
@@ -45,20 +45,20 @@ class GenePetri:
                 if self.inited_organism == self.organism_amount:
                     threading.Thread(target=self.evolution, daemon=True).start()
 
-            self.organism = [RLBrain(self.session, i) for i in range(GenePetri.organism_amount)]
+            self.organism = [RLBrain(self.session, i) for i in range(RLPetri.organism_amount)]
             for cell in self.organism:
-                Mimic(GenePetri.opponent, cell, GenePetri.opponent).learn(finish_init)
+                Mimic(RLPetri.opponent, cell, RLPetri.opponent).learn(finish_init)
             self.saver = tf.train.Saver()
             self.save(True)
 
     def evolution(self):
         while True:
             self.conduct_game()
-            while self.conducted is not GenePetri.games_count * GenePetri.organism_amount * 2:
+            while self.conducted is not RLPetri.games_count * RLPetri.organism_amount * 2:
                 print("Conducted games: ", self.conducted)
                 time.sleep(0.1)
             self.show_win_rate()
-            while self.genetic_rank + self.dummy_rank + self.draw is not GenePetri.test_game_count * 2:
+            while self.genetic_rank + self.dummy_rank + self.draw is not RLPetri.test_game_count * 2:
                 print("Win rate: ", self.genetic_rank, self.dummy_rank, self.draw)
                 time.sleep(0.1)
             value = self.genetic_rank / (self.genetic_rank + self.dummy_rank + 1e-9)
@@ -72,10 +72,10 @@ class GenePetri:
             print("-------------------------------")
             if value is 0:
                 self.genocide()
+            if value >= 0.5:
+                self.save()
             self.genetic_rank = self.dummy_rank = self.draw = self.conducted = 0
             self.loser_elimination()
-            # self.fertilization()
-            # self.genetic_mutate()
             self.steps += 1
 
     def conduct_game(self):
@@ -88,27 +88,13 @@ class GenePetri:
                 self.conducted += 1
             return done
 
-        for i in range(GenePetri.organism_amount):
-            for _ in range(GenePetri.games_count):
-                Versus(self.organism[i], GenePetri.opponent).start_game(done_gen((i, -1)))
-                Versus(GenePetri.opponent, self.organism[i]).start_game(done_gen((-1, i)))
-
-    def genetic_mutate(self):
-        for i in range(GenePetri.organism_amount):
-            self.organism[i].mutate()
+        for i in range(RLPetri.organism_amount):
+            for _ in range(RLPetri.games_count):
+                Versus(self.organism[i], RLPetri.opponent).start_game(done_gen((i, -1)))
+                Versus(RLPetri.opponent, self.organism[i]).start_game(done_gen((-1, i)))
 
     def loser_elimination(self):
         self.organism[np.argmin(self.rank)].reset()
-
-    def genocide(self):
-        for cell in self.organism:
-            cell.reset()
-
-    def fertilization(self):
-        alpha_id = np.argmax(self.rank)
-        for i in range(GenePetri.organism_amount):
-            if i is not alpha_id:
-                self.organism[i].fertilization(alpha_id)
 
     def show_win_rate(self):
         self.genetic_rank = self.dummy_rank = self.draw = 0
@@ -124,9 +110,9 @@ class GenePetri:
             self.draw += 1 if final_standings["result"] == 0 else 0
 
         alpha_id = np.argmax(self.rank)
-        for _ in range(GenePetri.test_game_count):
-            Versus(self.organism[alpha_id], GenePetri.opponent).start_game(done_gen)
-            Versus(GenePetri.opponent, self.organism[alpha_id]).start_game(done_dum)
+        for _ in range(RLPetri.test_game_count):
+            Versus(self.organism[alpha_id], RLPetri.opponent).start_game(done_gen)
+            Versus(RLPetri.opponent, self.organism[alpha_id]).start_game(done_dum)
 
     def save(self, meta=False):
         self.saver.save(self.session,

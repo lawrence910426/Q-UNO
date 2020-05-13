@@ -5,7 +5,8 @@ from Brains.Naive_Brain import *
 from Brains.Gene_Brain import GeneBrain
 from mttkinter import mtTkinter as tk
 from Versus import Versus
-from Gene_Petri import GenePetri
+from Petri.RL_Petri import RLPetri
+from Petri.Gene_Petri import GenePetri
 from Mimic import Mimic
 import tensorflow as tf
 from functools import partial
@@ -49,7 +50,9 @@ tk.Button(root, text="save model", command=save).pack()
 # first_hand, second_hand = DefensiveBrain(), OffensiveBrain()
 # first_hand, second_hand = RLBrain(tf.Session(), 1), DummyBrain()
 # Mimic(DefensiveBrain(), first_hand, DummyBrain()).learn(partial(run, False))
+
 petri = GenePetri(datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
-# petri = GenePetri("RL Haha 幹", True)
+# petri = RLPetri(datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
+# petri = RLPetri("RL Haha 幹", True)
 
 root.mainloop()
