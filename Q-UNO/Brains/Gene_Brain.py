@@ -23,7 +23,9 @@ class GeneBrain(Brain):
         with tf.variable_scope('network_' + str(self.id)):
             self.layers.append(tf.layers.dense(self.state, 30, tf.nn.leaky_relu, True,
                                                kernel_initializer=w_init, bias_initializer=b_init))
-            # self.layers.append(tf.layers.dense(self.state, 50, tf.nn.leaky_relu, True,
+            # self.layers.append(tf.layers.dense(self.state, 40, tf.nn.leaky_relu, True,
+            #                                    kernel_initializer=w_init, bias_initializer=b_init))
+            # self.layers.append(tf.layers.dense(self.state, 30, tf.nn.leaky_relu, True,
             #                                    kernel_initializer=w_init, bias_initializer=b_init))
             self.layers.append(tf.layers.dense(self.layers[-1], self.actions, tf.nn.sigmoid, True,
                                                kernel_initializer=w_init, bias_initializer=b_init))

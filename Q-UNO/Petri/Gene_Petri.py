@@ -22,7 +22,7 @@ class GenePetri:
         self.steps = self.genetic_rank = self.dummy_rank = self.draw = self.conducted = 0
         self.win_rate_log = tf.summary.FileWriter("logs/fit/" + tag, self.session.graph)
         self.win_rate = tf.placeholder(tf.float64)
-        self.win_rate_summary = tf.summary.scalar(name='win_rate', tensor=self.win_rate)
+        self.win_rate_summary = tf.summary.scalar(name='win_rate_gene', tensor=self.win_rate)
         threading.Thread(target=self.evolution, daemon=True).start()
 
     def evolution(self):
@@ -57,7 +57,6 @@ class GenePetri:
                     self.rank[parameter[0]] += 1
                 if final_standings["result"] == 2 and parameter[1] is not -1:
                     self.rank[parameter[1]] += 1
-                print(final_standings, " ", self.conducted)
                 self.conducted += 1
             return done
 

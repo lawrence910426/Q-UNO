@@ -17,14 +17,14 @@ class RLPetri:
     test_game_count = 30
     opponent = DefensiveBrain()
 
-    def __init__(self, tag, restore=False):
+    def __init__(self, tag, restore=False, **kwargs):
         self.session = tf.Session()
         self.rank = np.zeros(RLPetri.organism_amount)
-        self.inited_organism, self.tag = 0, tag
+        self.inited_organism, self.tag, self.alpha_id, self.keep = 0, tag, 0, True
         self.steps = self.genetic_rank = self.dummy_rank = self.draw = self.conducted = 0
         self.win_rate_log = tf.summary.FileWriter("logs/fit/" + self.tag, self.session.graph)
         self.win_rate = tf.placeholder(tf.float64)
-        self.win_rate_summary = tf.summary.scalar(name='win_rate', tensor=self.win_rate)
+        self.win_rate_summary = tf.summary.scalar(name='win_rate_rl', tensor=self.win_rate)
 
         if restore:
             with open('models/' + self.tag + "/pickle", 'rb') as file:
@@ -46,13 +46,16 @@ class RLPetri:
                     threading.Thread(target=self.evolution, daemon=True).start()
 
             self.organism = [RLBrain(self.session, i) for i in range(RLPetri.organism_amount)]
-            for cell in self.organism:
-                Mimic(RLPetri.opponent, cell, RLPetri.opponent).learn(finish_init)
             self.saver = tf.train.Saver()
             self.save(True)
+            if "No Mimic" in kwargs:
+                threading.Thread(target=self.evolution, daemon=True).start()
+            else:
+                for cell in self.organism:
+                    Mimic(RLPetri.opponent, cell, RLPetri.opponent).learn(finish_init)
 
     def evolution(self):
-        while True:
+        while self.keep:
             self.conduct_game()
             while self.conducted is not RLPetri.games_count * RLPetri.organism_amount * 2:
                 print("Conducted games: ", self.conducted)
@@ -77,6 +80,7 @@ class RLPetri:
             self.genetic_rank = self.dummy_rank = self.draw = self.conducted = 0
             self.loser_elimination()
             self.steps += 1
+        print("RL Petri has stopped")
 
     def conduct_game(self):
         def done_gen(parameter):
@@ -109,10 +113,10 @@ class RLPetri:
             self.genetic_rank += 1 if final_standings["result"] == 2 else 0
             self.draw += 1 if final_standings["result"] == 0 else 0
 
-        alpha_id = np.argmax(self.rank)
+        self.alpha_id = np.argmax(self.rank)
         for _ in range(RLPetri.test_game_count):
-            Versus(self.organism[alpha_id], RLPetri.opponent).start_game(done_gen)
-            Versus(RLPetri.opponent, self.organism[alpha_id]).start_game(done_dum)
+            Versus(self.organism[self.alpha_id], RLPetri.opponent).start_game(done_gen)
+            Versus(RLPetri.opponent, self.organism[self.alpha_id]).start_game(done_dum)
 
     def save(self, meta=False):
         self.saver.save(self.session,
@@ -131,3 +135,6 @@ class RLPetri:
                 ],
                 "steps": self.steps
             }, file)
+
+    def get_alpha(self):
+        return self.organism[self.alpha_id]
