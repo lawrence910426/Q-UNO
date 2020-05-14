@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage[pdftex,active,tightpage]{preview}
+\setlength\PreviewBorder{2mm}
+
+\usepackage[utf8]{inputenc} % this is needed for umlauts
+\usepackage[ngerman]{babel} % this is needed for umlauts
+\usepackage[T1]{fontenc}    % this is needed for correct output of umlauts in pdf
+\usepackage{amssymb,amsmath,amsfonts} % nice math rendering
+\usepackage{braket} % needed for \Set
+\usepackage{caption}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm,algpseudocode}
+
+
+\DeclareCaptionFormat{myformat}{#3}
+\captionsetup[algorithm]{format=myformat}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\newcommand{\vars}{\texttt}
+
+
+\begin{document}
+\begin{preview}
+    \begin{algorithm}[H]
+	\caption{Algorithm:Dummy algorithm}
+    	\label{alg:q-learning}
+	\begin{algorithmic}
+	\Function{Dummy}{$\vars{S as state}$}
+		
+	    	$\vars{Actions}$ $\gets$ $\vars{S.Playable}$ $\cup$ $\vars{Take card from deck}$
+		
+		\Return Random.GetOne($\vars{Actions}$)
+	\EndFunction
+	\end{algorithmic}
+    \end{algorithm}
+\end{preview}
+\end{document}
