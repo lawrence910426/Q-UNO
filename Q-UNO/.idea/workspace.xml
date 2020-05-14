@@ -3,22 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1a734aae-3ac1-4ce4-a9b9-ce7d96e0b1af" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brains/Gene_Brain.py" beforeDir="false" afterPath="$PROJECT_DIR$/Brains/Gene_Brain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Experiments/RL_vs_Gene.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiments/RL_vs_Gene.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Petri/Gene_Petri.py" beforeDir="false" afterPath="$PROJECT_DIR$/Petri/Gene_Petri.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Petri/RL_Petri.py" beforeDir="false" afterPath="$PROJECT_DIR$/Petri/RL_Petri.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/fit/20200513-181703/events.out.tfevents.1589365024.DESKTOP-A9HSDPI" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/fit/Gene Brain hidden - 1 against offensive/events.out.tfevents.1588905381.DESKTOP-A9HSDPI" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/fit/Gene Brain hidden - 2 against defen/events.out.tfevents.1589357083.DESKTOP-A9HSDPI" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/fit/RL Brain hidden - 1 against offensive/events.out.tfevents.1588868858.DESKTOP-A9HSDPI" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/fit/RL Brain hidden - 2 against offensive/events.out.tfevents.1588953595.DESKTOP-A9HSDPI" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/fit/RL Brain hidden - 3 (Mentor defen.) against defen/events.out.tfevents.1589216087.DESKTOP-A9HSDPI" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/fit/RL Brain hidden - 3 (Mentor offen.) against offen/events.out.tfevents.1589121079.DESKTOP-A9HSDPI" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/fit/RL Brain hidden - 3 against offensive/events.out.tfevents.1588999358.DESKTOP-A9HSDPI" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/fit/RL Brain hidden - 4 (Mentor defen.) against defen/events.out.tfevents.1589296458.DESKTOP-A9HSDPI" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/fit/RL Brain hidden - 4 (Mentor offen.) against offen/events.out.tfevents.1589257202.DESKTOP-A9HSDPI" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/fit/RL Brain hidden - 5 (Mentor offen.) against offen/events.out.tfevents.1589287074.DESKTOP-A9HSDPI" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Report/旺宏科學獎.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../Report/旺宏科學獎.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20200514-005234 Gene/events.out.tfevents.1589388953.DESKTOP-A9HSDPI" beforeDir="false" afterPath="$PROJECT_DIR$/logs/fit/20200514-005234 Gene/events.out.tfevents.1589388953.DESKTOP-A9HSDPI" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
