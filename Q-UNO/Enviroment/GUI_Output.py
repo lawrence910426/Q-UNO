@@ -1,5 +1,5 @@
 from tkinter import *
-import tkinter as tk
+from mttkinter import mtTkinter as tk
 import time
 
 

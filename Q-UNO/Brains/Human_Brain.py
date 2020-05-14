@@ -1,6 +1,5 @@
 from Brains.Brain import Brain
-import tkinter as tk
-from tkinter import *
+from mttkinter import mtTkinter as tk
 from functools import partial
 import time
 import copy
@@ -64,7 +63,7 @@ class HumanBrain(Brain):
             time.sleep(0.1)
         return self.chosen_card
 
-    def add_observation(self, s, a, r, s_):
+    def add_observation(self, s, a, r, s_, batch_size):
         return
 
     def learn(self):

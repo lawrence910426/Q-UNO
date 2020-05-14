@@ -11,13 +11,13 @@ class Versus:
             return self.first_hand.get(state)
 
         def first_hand_observe(s, a, r, s_):
-            self.first_hand.add_observation(s, a, r, s_)
+            self.first_hand.add_observation(s, a, r, s_, 64)
 
         def second_hand_play(state):
             return self.second_hand.get(state)
 
         def second_hand_observe(s, a, r, s_):
-            self.second_hand.add_observation(s, a, r, s_)
+            self.second_hand.add_observation(s, a, r, s_, 64)
 
         server = UNOServer({"init_hand_cards": 3, "max_plays": 1000, "enable_GUI": False})
         clients = server.init_game()

@@ -15,7 +15,7 @@
 2 is orange
 3 is green
 4 is blue
-0 is special card which has arbitrary number
+0 is special card which has arbitrary color
 """
 
 

@@ -23,6 +23,10 @@ class GeneBrain(Brain):
         with tf.variable_scope('network_' + str(self.id)):
             self.layers.append(tf.layers.dense(self.state, 30, tf.nn.leaky_relu, True,
                                                kernel_initializer=w_init, bias_initializer=b_init))
+            # self.layers.append(tf.layers.dense(self.state, 40, tf.nn.leaky_relu, True,
+            #                                    kernel_initializer=w_init, bias_initializer=b_init))
+            # self.layers.append(tf.layers.dense(self.state, 30, tf.nn.leaky_relu, True,
+            #                                    kernel_initializer=w_init, bias_initializer=b_init))
             self.layers.append(tf.layers.dense(self.layers[-1], self.actions, tf.nn.sigmoid, True,
                                                kernel_initializer=w_init, bias_initializer=b_init))
         network_vars = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope='network_' + str(self.id))
@@ -39,7 +43,7 @@ class GeneBrain(Brain):
         action_values = action_values * NNTranslate.get_available_mask(available)
         return NNTranslate.nn_to_state(np.argmax(action_values))
 
-    def add_observation(self, s, a, r, s_):
+    def add_observation(self, s, a, r, s_, batch_size):
         return
 
     def learn(self):
@@ -48,5 +52,11 @@ class GeneBrain(Brain):
     def mutate(self):
         self.session.run(self.mutation)
 
-    def die_off(self):
+    def reset(self):
         self.session.run(self.suicide)
+
+    def fertilization(self, mate_id):
+        self_param = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope='network_' + str(self.id))
+        mate_param = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope='network_' + str(mate_id))
+        fertilize = [tf.assign(s, tf.div(tf.add(s, m), 2)) for s, m in zip(self_param, mate_param)]
+        self.session.run(fertilize)
