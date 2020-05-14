@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[pdftex,active,tightpage]{preview}
+\setlength\PreviewBorder{2mm}
+
+\usepackage[utf8]{inputenc} % this is needed for umlauts
+\usepackage[ngerman]{babel} % this is needed for umlauts
+\usepackage[T1]{fontenc}    % this is needed for correct output of umlauts in pdf
+\usepackage{amssymb,amsmath,amsfonts} % nice math rendering
+\usepackage{braket} % needed for \Set
+\usepackage{caption}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm,algpseudocode}
+
+
+
+\DeclareCaptionFormat{myformat}{#3}
+\captionsetup[algorithm]{format=myformat}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\newcommand{\vars}{\texttt}
+
+
+\begin{document}
+\begin{preview}
+    \begin{algorithm}[H]
+	\caption{Algorithm:Naive Offensive algorithm}
+    	\label{alg:q-learning}
+	\begin{algorithmic}
+	\Function{Naive Offensive}{$\vars{S as state}$}
+		\State $\vars{Functional Cards}$ $\gets$ $\vars{S.Playable}$ $\cap$ $\vars{S.Functional}$
+		\State $\vars{Normal Cards}$ $\gets$ $\vars{S.Playable}$ $\cap$ ($\vars{S}$ $\setminus$ $\vars{S.Functional}$)
+		\If{$\vars{Normal Cards}$ $\textbf{is not}$ $\varnothing$}
+			\State \Return Random.GetOne($\vars{Normal Cards}$)
+		\ElsIf{$\vars{Functional Cards}$ $\textbf{is not}$ $\varnothing$}
+			\State \Return Random.GetOne($\vars{Functional Cards}$)
+		\Else
+			\State \Return $\vars{Take card from deck}$
+		\EndIf
+	\EndFunction
+	\end{algorithmic}
+    \end{algorithm}
+\end{preview}
+\end{document}
