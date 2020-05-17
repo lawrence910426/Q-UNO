@@ -15,7 +15,7 @@ class RLPetri:
     games_count = 10
     organism_amount = 3
     test_game_count = 30
-    opponent = DefensiveBrain()
+    opponent = OffensiveBrain()
 
     def __init__(self, tag, restore=False, **kwargs):
         self.session = tf.Session()
@@ -52,7 +52,7 @@ class RLPetri:
                 threading.Thread(target=self.evolution, daemon=True).start()
             else:
                 for cell in self.organism:
-                    Mimic(RLPetri.opponent, cell, RLPetri.opponent).learn(finish_init)
+                    Mimic(RLPetri.opponent, cell, DefensiveBrain()).learn(finish_init)
 
     def evolution(self):
         while self.keep:

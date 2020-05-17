@@ -13,7 +13,7 @@ class GenePetri:
     games_count = 3
     organism_amount = 5
     test_game_count = 30
-    Opponent = DefensiveBrain()
+    Opponent = DummyBrain()
 
     def __init__(self, tag):
         self.session = tf.Session()

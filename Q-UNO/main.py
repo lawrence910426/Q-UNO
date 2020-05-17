@@ -51,8 +51,8 @@ tk.Button(root, text="save model", command=save).pack()
 # first_hand, second_hand = RLBrain(tf.Session(), 1), DummyBrain()
 # Mimic(DefensiveBrain(), first_hand, DummyBrain()).learn(partial(run, False))
 
-petri = GenePetri(datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
-# petri = RLPetri(datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
+# petri = GenePetri(datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
+petri = RLPetri(datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
 # petri = RLPetri("RL Haha 幹", True)
 
 root.mainloop()
