@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage[pdftex,active,tightpage]{preview}
+\setlength\PreviewBorder{2mm}
+
+\usepackage[utf8]{inputenc} % this is needed for umlauts
+\usepackage[ngerman]{babel} % this is needed for umlauts
+\usepackage[T1]{fontenc}    % this is needed for correct output of umlauts in pdf
+\usepackage{amssymb,amsmath,amsfonts} % nice math rendering
+\usepackage{braket} % needed for \Set
+\usepackage{caption}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm,algpseudocode}
+
+
+
+\DeclareCaptionFormat{myformat}{#3}
+\captionsetup[algorithm]{format=myformat}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\newcommand{\vars}{\texttt}
+
+
+\begin{document}
+\begin{preview}
+    \begin{algorithm}[H]
+	\caption{Algorithm:Deep Q Learning algorithm}
+	\begin{algorithmic}
+	\State $\vars{Memory}$ $\gets$ $\vars{Initialize memory container with zeros}$
+	\State $\vars{step}$ $\gets$ 0
+	\State $\vars{Network}$ $\gets$ $\vars{Initialize weights with zeros}$
+	\State $\gamma$ $\gets$ $\vars{Discount factor}$
+	\State $\epsilon$ $\gets$ $\epsilon$-greedy algorithm factor
+	\Function{Get Result}{$\vars{S as state}$}
+		\For{1 $\leq$ i $\leq$ 108} \Comment{There are 108 cards in a UNO deck}
+			\State $\vars{Mask$_i$}$ $\gets$ [Card$_i$ $\in$ $\vars{S.Playable}$]
+				    \Comment{[ ] represents Iverson bracket}
+		\EndFor
+		\State $\vars{Mask$_0$}$ $\gets$ 1 
+			    \Comment{Player may always take a card from the deck}
+		\State $\vars{Result}$ $\gets$ Sigmoid($\vars{Network}$.Run($\vars{S}$)) + 1
+		\State \Return ($\vars{Mask}$ $\odot$ $\vars{Result}$) - 1
+			    \Comment {$\odot$ represents Hadamard product}
+	\EndFunction
+
+	\Function{Get Action}{$\vars{S as state}$}
+		\If{Random.Uniform(0, 1) > $\epsilon$}
+			\State \Return{Dummy Algorithm.Get Action($\vars{S}$)}
+		\Else
+			\State \Return{Argmax(Get Result($\vars{S}$))}
+		\EndIf
+	\EndFunction
+
+	\Function{Observe}{S as state, A as action, R as reward, S$^\prime$ as state}
+		\State $\vars{Memory[step mod N]}$ $\gets$ $\vars{S, A, R, S$^\prime$}$
+			    \Comment{N is an arbitrary number}
+		\State $\vars{Values}$ $\gets$ $\vars{Network}$.Run($\vars{S}$)[$\vars{A}$] + $\vars{R}$ + $\gamma$ $\cdot$ max$_{A^\prime}$ Get Result(S$^\prime$)[A$^\prime$]
+		\State $\vars{Network}$.Run($\vars{S}$)[$\vars{A}$] $\gets$ Perform gradient descent on $\vars{Values}$
+		\State $\vars{step}$ $\gets$ $\vars{step}$ + 1
+	\EndFunction
+	\end{algorithmic}
+    \end{algorithm}
+\end{preview}
+\end{document}

@@ -24,19 +24,14 @@
 \begin{document}
 \begin{preview}
     \begin{algorithm}[H]
-	\caption{Algorithm:Naive Offensive algorithm}
-    	\label{alg:q-learning}
+	\caption{Algorithm:Deep Q Learning algorithm}
 	\begin{algorithmic}
-	\Function{Get Action}{$\vars{S as state}$}
-		\State $\vars{Functional Cards}$ $\gets$ $\vars{S.Playable}$ $\cap$ $\vars{Card.Functional}$
-		\State $\vars{Normal Cards}$ $\gets$ $\vars{S.Playable}$ $\cap$ ($\vars{Card}$ $\setminus$ $\vars{Card.Functional}$)
-		\If{$\vars{Functional Cards}$ $\textbf{is not}$ $\varnothing$}
-			\State \Return Random.GetOne($\vars{Functional Cards}$)
-		\ElsIf{$\vars{Normal Cards}$ $\textbf{is not}$ $\varnothing$}
-			\State \Return Random.GetOne($\vars{Normal Cards}$)
-		\Else
-			\State \Return $\vars{Take card from deck}$
-		\EndIf
+	\Function{Behavior Cloning}{$\vars{M as mentor, E as enviroment}$}
+		\State $\vars{S}$ $\gets$ $\vars{E}$.Get State()
+		\State $\vars{A}$ $\gets$ $\vars{M}$.Get Action()
+		\State $\vars{R}$ $\gets$ $\vars{E}$.Do Action($\vars{A}$)
+		\State $\vars{S$^\prime$}$ $\gets$ $\vars{E}$.Get State()
+		\State Observe($\vars{S, A, R, S$^\prime$}$)
 	\EndFunction
 	\end{algorithmic}
     \end{algorithm}
