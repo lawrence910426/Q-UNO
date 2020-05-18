@@ -27,9 +27,9 @@
 	\caption{Algorithm:Naive Offensive algorithm}
     	\label{alg:q-learning}
 	\begin{algorithmic}
-	\Function{Naive Offensive}{$\vars{S as state}$}
-		\State $\vars{Functional Cards}$ $\gets$ $\vars{S.Playable}$ $\cap$ $\vars{S.Functional}$
-		\State $\vars{Normal Cards}$ $\gets$ $\vars{S.Playable}$ $\cap$ ($\vars{S}$ $\setminus$ $\vars{S.Functional}$)
+	\Function{Get Action}{$\vars{S as state}$}
+		\State $\vars{Functional Cards}$ $\gets$ $\vars{S.Playable}$ $\cap$ $\vars{Card.Functional}$
+		\State $\vars{Normal Cards}$ $\gets$ $\vars{S.Playable}$ $\cap$ ($\vars{Card}$ $\setminus$ $\vars{Card.Functional}$)
 		\If{$\vars{Functional Cards}$ $\textbf{is not}$ $\varnothing$}
 			\State \Return Random.GetOne($\vars{Functional Cards}$)
 		\ElsIf{$\vars{Normal Cards}$ $\textbf{is not}$ $\varnothing$}

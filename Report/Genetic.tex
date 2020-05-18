@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage[pdftex,active,tightpage]{preview}
+\setlength\PreviewBorder{2mm}
+
+\usepackage[utf8]{inputenc} % this is needed for umlauts
+\usepackage[ngerman]{babel} % this is needed for umlauts
+\usepackage[T1]{fontenc}    % this is needed for correct output of umlauts in pdf
+\usepackage{amssymb,amsmath,amsfonts} % nice math rendering
+\usepackage{braket} % needed for \Set
+\usepackage{caption}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm,algpseudocode}
+
+
+
+\DeclareCaptionFormat{myformat}{#3}
+\captionsetup[algorithm]{format=myformat}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\newcommand{\vars}{\texttt}
+
+
+\begin{document}
+\begin{preview}
+    \begin{algorithm}[H]
+	\caption{Algorithm:Genetic algorithm}
+    	\label{alg:q-learning}
+	\begin{algorithmic}
+	\Function{Get Action}{$\vars{S as state}$}
+		\For{1 $\leq$ i $\leq$ 108} \Comment{There are 108 cards in a UNO deck}
+			\State $\vars{Mask$_i$}$ $\gets$ [Card$_i$ $\in$ $\vars{S.Playable}$]
+				    \Comment{[ ] represents Iverson bracket}
+		\EndFor
+		\State $\vars{Mask$_0$}$ $\gets$ 1 
+			    \Comment{Player may always take a card from the deck}
+		\State $\vars{Result}$ $\gets$ Network.Run($\vars{S}$)
+		\State $\vars{Result}$ $\gets$ Sigmoid($\vars{Result}$) + 1
+		\State \Return Argmax($\vars{Mask}$ $\odot$ $\vars{Result}$)  
+			    \Comment {$\odot$ represents Hadamard product}
+	\EndFunction
+	
+	\Function{Genetic diffusion}{}
+		\State $\vars{Alpha}$ $\gets$ $\vars{The cell achieved the highest rank}$
+		\For{$\vars{Cell}$ $\textbf{in}$ $\vars{Petri}$ $\setminus$ $\vars{Alpha}$}
+        		\State $\vars{Cell.Weights}$ $\gets$ ($\vars{Cell.Weights}$ + $\vars{Alpha.Weights}$) / 2
+      		\EndFor
+	\EndFunction
+	
+	\Function{Mutate}{}
+		\For{$\vars{Cell}$ $\textbf{in}$ $\vars{Petri}$}
+        		\State $\vars{Cell.Weights}$ $\gets$ $\vars{Cell.Weights}$ + Gaussian random()
+      		\EndFor
+	\EndFunction
+
+	\Function{Evolution}{}
+		\State $\vars{Petri}$ $\gets$ $\vars{Cells initialized with zero weights}$
+		\For{$\vars{Cell}$ $\textbf{in}$ $\vars{Petri}$}
+        		\For{1 To $\vars{N}$} \Comment{N is an arbitrary number}
+				\State $\vars{Result}$ $\gets$ $\vars{Cell}$ v.s. $\vars{Opponent}$
+        			\If{$\vars{Result}$ $\textbf{is}$ $\vars{Win}$}
+					\State $\vars{Cell.Rank}$ $\gets$ $\vars{Cell.Rank}$ + 1
+				\EndIf
+      			\EndFor
+      		\EndFor
+		\State Genetic Diffusion()
+		\State Mutate()
+	\EndFunction
+	\end{algorithmic}
+    \end{algorithm}
+\end{preview}
+\end{document}
