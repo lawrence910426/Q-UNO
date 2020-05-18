@@ -63,6 +63,7 @@ class RLBrain:
         # Q target net #
         action_values = tf.add(target_out, 1)
         action_values = tf.multiply(action_values, mask)
+        action_values = tf.add(action_values, -1)
         q_target = r + self.gamma * tf.reduce_max(action_values)
         q_target = tf.stop_gradient(q_target)
         # Training #
@@ -111,7 +112,7 @@ class RLBrain:
         self.memory["a"][pos, :] = NNTranslate.card_to_nn(a)
         self.memory["r"][pos, :] = r
         self.memory["s_"][pos, :] = NNTranslate.state_to_nn(s_)[np.newaxis, :]
-        self.memory["m"][pos, :] = NNTranslate.get_available_mask(Brain.get_available(s))
+        self.memory["m"][pos, :] = NNTranslate.get_available_mask(Brain.get_available(s_))
         self.memory_count += 1
         if learn:
             threading.Thread(target=self.learn).start()
