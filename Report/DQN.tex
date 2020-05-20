@@ -30,7 +30,7 @@
 	\State $\vars{step}$ $\gets$ 0
 	\State $\vars{Network}$ $\gets$ $\vars{Initialize weights with zeros}$
 	\State $\gamma$ $\gets$ $\vars{Discount factor}$
-	\State $\epsilon$ $\gets$ $\epsilon$-greedy algorithm factor
+	\State $\epsilon$ $\gets$ $\vars{$\epsilon$-greedy algorithm factor}$
 	\Function{Get Result}{$\vars{S as state}$}
 		\For{1 $\leq$ i $\leq$ 108} \Comment{There are 108 cards in a UNO deck}
 			\State $\vars{Mask$_i$}$ $\gets$ [Card$_i$ $\in$ $\vars{S.Playable}$]
