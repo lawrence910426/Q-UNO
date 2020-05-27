@@ -53,7 +53,9 @@
 
 	\Function{Observe}{S as state, A as action, R as reward, S$^\prime$ as state}
 		\State $\vars{Memory[step mod N]}$ $\gets$ $\vars{S, A, R, S$^\prime$}$
-			    \Comment{N is an arbitrary number}
+			  \Comment{N is an arbitrary number}
+		\State $\vars{Batch}$ $\gets$ Random.Batch($\vars{Batch Size}$)
+		\State $\vars{S, A, R, S$^\prime$}$ $\gets$ $\vars{Memory}$[$\vars{Batch}$]
 		\State $\vars{Values}$ $\gets$ $\vars{Network}$.Run($\vars{S}$)[$\vars{A}$] + $\vars{R}$ + $\gamma$ $\cdot$ max$_{A^\prime}$ Get Result(S$^\prime$)[A$^\prime$]
 		\State $\vars{Network}$.Run($\vars{S}$)[$\vars{A}$] $\gets$ Perform gradient descent on $\vars{Values}$
 		\State $\vars{step}$ $\gets$ $\vars{step}$ + 1
